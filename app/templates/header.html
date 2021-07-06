@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<title>PyGoat</title>
+
+		<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/css/header-style.css">
+
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<!-- Sidebar  -->
+			{% block lessons %}
+			<nav id="sidebar">
+				<div class="sidebar-header">
+					<h2>PyGoat</h2>
+					<img id="logo-img" src="../static/logo.svg">
+				</div>
+				<ul class="lesson-list">
+					{% for lesson in lessons | sort(attribute='difficulty') %}
+						{% if lesson.completable %}
+							{% if lesson.completed %}
+								<li class="bg-success"><a href="/lessons/{{ lesson.url }}">{{ lesson.name }}</a></li>
+							{% else %}
+								<li class="bg-danger"><a href="/lessons/{{ lesson.url }}">{{ lesson.name }}</a></li>
+							{% endif %}
+						{% else %}
+							<li class="bg-secondary"><a href="/lessons/{{ lesson.url }}">{{ lesson.name }}</a></li>
+						{% endif %}
+					{% endfor %}
+					<ul>
+						<li class="report-button"><a href="/report">Report</a></li>
+						<li class="logout-button"><a href="/logout">Log Out</a></li> 
+					</ul>
+			</nav>
+			</ul>
+			</nav>
+			<div id="collapse-button">
+				<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container-fluid">
+						<button type="button" id="sidebarCollapse" class="btn btn-info">
+							<img src="../static/justify.svg" height="30px" width="34px">
+						</button>
+						{% if title != "Reporting" %}
+							{% for lesson in lessons %}
+								{% if lesson.name == title %}
+								<form action="/reset/{{ lesson.url }}">
+								{% endif %}
+							{% endfor %}
+								<button type="submit" id="resetLesson" class="btn btn-secondary" >Reset Lesson</button>
+						</form>
+						{% endif %}
+					</div>
+				</nav>
+			</div>
+			{% endblock %}
+
+			<script src="../static/js/libraries/popper.js"></script>
+			<script src="../static/js/libraries/bootstrap.min.js"></script>
+
+			<script type="text/javascript">
+				window.addEventListener("load", (event) => {
+					document.getElementById("sidebarCollapse").addEventListener("click", (ev) => {
+						document.getElementById("sidebar").classList.toggle("active");
+					});
+				});
+			</script>
+			<div id="content">{% block content %}{% endblock %}</div>
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					{% for category, message in messages %}
+						<div class="fixed-bottom alert alert-{{ category }} alert-dismissible text-center" role="alert">
+					{{ message }}
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+						aria-hidden="true">&times;</span></button>
+			</div>
+					{% endfor %}
+				{% endif %}
+			{% endwith %}
+		</div>
+	</body>
+</html>

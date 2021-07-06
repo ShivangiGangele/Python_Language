@@ -1,0 +1,309 @@
+/*
+File: main.css
+Description: Main Style Sheet for the PyGoat Client
+
+Conventions followed:
+    The Color Pallet is the first set of rules outlined in this sheet
+    4-space tabs
+    1 empty lines between rules
+    3 empty lines between rules affecting different components or with different purposes
+    1 line rules are to follow the convention:
+        Selector { rule: ruleValue; }
+*/
+
+
+
+/* Color Pallet */
+
+.themeColor1 { background-color: #860037; }
+
+.themeColor2 { background-color: #333333; }
+
+.themeColor3 { background-color: #ffd200; }
+
+.themeColor4 { background-color: #eeeeee; }
+
+.themeColor5 { background-color: #c4c4c4; }
+
+
+
+/* Fonts */
+
+body * {
+    font-family: sans-serif;
+    font-weight: normal;
+}
+
+
+
+/* Page Formating */
+
+html, body {
+    height:100%;
+    width:100%;
+    margin:0;
+    padding:0;
+}
+
+main {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    /* align-items: ; */
+}
+
+
+
+/* Utility classes */
+
+.h100 { height: 100%; }
+
+.h75 { height: 75%; }
+
+.h50 { height: 50%; }
+
+.h25 { height: 36%; }
+
+.w100 { width: 100%; }
+
+.w75 { width: 75%; }
+
+.w50 { width: 50%; }
+
+.w25 { width: 25%; }
+
+.hide { display: none; }
+
+.inBlock { display: inline-block; }
+
+.flexIt { display: flex; }
+
+.boxIt {
+    display: flex;
+    align-items: center;
+}
+
+.centerIt { text-align: center; }
+
+
+/* GoatHeader Component */
+
+.goat-header {
+    background-color: #333333;
+    color: white;
+}
+
+.header-title {
+    font-size: 36pt;
+    font-weight: lightest;
+}
+
+.header-title-box { padding-left: 60px;}
+
+
+
+/* SVG Logo Component */
+
+.page-title {
+    margin-left: 5px;
+    font-size: 36pt;
+}
+
+
+
+/* Site Navigator Component */
+
+.site-nav-item { 
+    width: 100%;
+    text-align: center;
+    background-color: #ffd200;
+    border: 0pt;
+}
+
+.site-nav-item-active { 
+    width: 100%;
+    text-align: center;
+    background-color: #860037;
+    color: white;
+    border: 0pt;
+}
+
+.site-nav-item:hover {
+    width: 100%;
+    background-color: #EEEEEE;
+}
+
+.site-nav-item-active:hover {
+    width: 100%;
+    background-color: #EEEEEE;
+    color: black;
+}
+
+
+
+/* Lesson Navigator Component */ 
+
+.lesson-selection-area { margin-top: 50px; }
+
+
+
+/* Lesson Group Component */
+
+.lesson-group {
+    background-color: #eeeeee;
+    height: 50px;
+    display: flex;
+    align-items: 'center';
+    width: 100%;
+    font-size: 14pt;
+    padding: .25rem;
+    padding-left: 1.5rem;
+}
+
+.lesson-group:hover { background-color: #ffd200; }
+
+
+
+/* Lesson Item Component */
+
+.lesson-title { padding-left: 50px; }
+
+.lesson-item:hover {
+    color: 'black';
+    background-color: #ffd200;
+}
+
+.lesson-item {
+    transition: all 0.2s;
+    height: 50px;
+    /* display: flex;
+    align-items: 'center'; */
+    width: 100%;
+    font-size: 14pt;
+    color: white;
+    background-color: #222222;
+}
+
+.current-lesson { color: #ffd200; }
+
+#lesson-item-title:hover * { color: black; }
+
+#lesson-item-title:hover { background-color: #ffd200; }
+
+
+
+/* Lesson Area Component */
+
+.lesson-area {
+    width: 100%;
+    background-color: #c4c4c4;
+    padding: 50px
+}
+
+#inner-lesson-area {
+    background-color: #eeeeee;
+    height: 100%;
+}
+
+.renderResultHTML {
+    margin-left: 12.5%;
+}
+
+.server-feedback { padding: 15px; }
+
+
+/* Page Number Navigation Component */
+
+.page-num-nav {
+    border: 0pt;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+
+/* Rules for Lesson Pages */
+/* IMPORTANT!!! This is the area for style rules that apply to the lessons that are added to the PyGoat Application */
+
+.page1, .page2, .page3, .page4, .page5, .page6, .page7, .page8, .page9 {
+    padding: 20px;
+    font-size: larger;
+}
+
+
+.lesson-page-title {
+    text-align: center;
+    /* background-color: white; */
+    /* background-color: #333333; */
+    /* color: white; */
+    background-color: #ffd200;
+    /* background-color: #860037; */
+    border: 1pt #222222 solid;
+    border-radius: 2px;
+    font-size: larger;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 1rem;
+}
+
+
+.lesson-page-contents {
+    text-align: left;
+    background-color: white;
+    color: #222222;
+    border: solid 1pt #222222;
+    padding: 1rem
+}
+
+.lesson-page-contents * {
+    padding: .3rem;
+}
+
+.lesson-page-content-heading {
+    background-color: #333333;
+    color: white;
+    padding: .3rem;
+    border-radius: 2px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: .2rem;
+    padding-left: 1rem;
+}
+
+.lesson-page-content-end {
+    margin-bottom: 1rem;
+}
+
+.lesson-page-example {
+    background-color: #c4c4c4;
+    padding: .5rem;
+    margin-left:  10%;
+    margin-right: 10%;
+    border-radius: 2px;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    text-align: center;
+}
+
+.accordion h2:hover {
+    cursor: pointer;
+    background-color: #ffd200;
+    color: #222222;
+}
+
+/*.accordion {
+    width: min-content;
+    height: min-content;
+}*/
+
+/*.accordion div {
+    display: none;
+}*/
+
+.hide-content {
+    display: none;
+}
